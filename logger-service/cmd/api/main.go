@@ -26,6 +26,8 @@ type Config struct {
 }
 
 func main() {
+	log.Printf("Starting authentication service on port %s\n", webPort)
+
 	// Connect to mongo
 	mongoClient, err := connectToMongo()
 	if err != nil {

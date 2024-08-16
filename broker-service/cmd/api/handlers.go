@@ -105,7 +105,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
 	jsonData, _ := json.MarshalIndent(entry, "", "\t")
 
-	logServiceURL := "http://log-service/log"
+	logServiceURL := "http://logger-service/log"
 
 	request, err := http.NewRequest("POST", logServiceURL, bytes.NewBuffer(jsonData))
 	if err != nil {
@@ -116,7 +116,6 @@ func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
 	request.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
-
 	response, err := client.Do(request)
 	if err != nil {
 		app.errorJSON(w, err)
@@ -131,5 +130,7 @@ func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
 
 	var payload jsonResponse
 	payload.Error = false
-	payload.Message = "Logged"
+	payload.Message = "Logged!"
+
+	app.writeJSON(w, http.StatusAccepted, payload)
 }
