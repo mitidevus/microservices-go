@@ -79,7 +79,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     volumes:
-      - ./db-data/postgres/:/var/lib/postgresql/data/
+      - /db-data/postgres/:/var/lib/postgresql/data/
 
   mongo:
     image: "mongo:4.2.16-bionic"
@@ -90,7 +90,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - ./db-data/mongo/:/data/db/
+      - /db-data/mongo/:/data/db/
 
   mailhog:
     image: "mailhog/mailhog:latest"
@@ -106,4 +106,4 @@ services:
       mode: replicated
       replicas: 1
     volumes:
-      - ./db-data/rabbitmq/:/var/lib/rabbitmq/
+      - /db-data/rabbitmq/:/var/lib/rabbitmq/
