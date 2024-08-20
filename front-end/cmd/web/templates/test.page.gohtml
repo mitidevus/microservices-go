@@ -54,7 +54,7 @@
                 method: "POST",
             }
 
-            fetch("http:\/\/172.21.38.209:8080", body)
+            fetch({{.BrokerURL}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = "empty post request";
@@ -89,7 +89,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/handle", body)
+            fetch({{print .BrokerURL "/handle"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -124,7 +124,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/handle", body)
+            fetch({{print .BrokerURL "/handle"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -159,7 +159,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/handle", body)
+            fetch({{print .BrokerURL "/handle"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -194,7 +194,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/handle", body)
+            fetch({{print .BrokerURL "/handle"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -229,7 +229,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/log-grpc", body)
+            fetch({{print .BrokerURL "/log-grpc"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -266,7 +266,7 @@
                 headers: headers
             }
 
-            fetch("http:\/\/172.21.38.209:8080/handle", body)
+            fetch({{print .BrokerURL "/handle"}}, body)
             .then((response) => response.json())
             .then((data) => {
                 sent.innerHTML = JSON.stringify(payload, undefined, 4);

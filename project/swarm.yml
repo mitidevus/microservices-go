@@ -14,10 +14,12 @@ services:
       - caddy_config:/config
 
   front-end:
-    image: mitidevus/front-end:1.0.0
+    image: mitidevus/front-end:1.0.1
     deploy:
       mode: replicated
       replicas: 1
+    environment:
+      BROKER_URL: "http://backend"
 
   broker-service:
     image: mitidevus/broker-service:1.0.1
