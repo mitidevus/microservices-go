@@ -1,6 +1,24 @@
 version: '3'
 
 services:
+  caddy:
+    image: mitidevus/micro-caddy:1.0.0
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+  front-end:
+    image: mitidevus/front-end:1.0.0
+    deploy:
+      mode: replicated
+      replicas: 1
+
   broker-service:
     image: mitidevus/broker-service:1.0.1
     deploy:
@@ -80,3 +98,9 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - /db-data/postgres/:/var/lib/postgresql/data/
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
+  
